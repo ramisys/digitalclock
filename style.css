@@ -27,6 +27,7 @@ body {
     padding: 1rem 1rem;
     flex-direction: column;
     background-color: #FFFFFF;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1); 
 }
 
 #date, #time {
