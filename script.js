@@ -7,6 +7,19 @@ function realTimeClock() {
     document.getElementById('time').innerHTML = timeString;
 }
 
+function getDate() {
+    const date = document.getElementById('date');
+    const today = new Date();
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+    date.textContent = today.toLocaleDateString('en-US', options);
+}
+
+window.onload = getDate;
+
 realTimeClock();
 
 setInterval(realTimeClock, 1000);
