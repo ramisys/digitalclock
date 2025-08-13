@@ -1,3 +1,14 @@
+:root {
+    --bg-color-light: #F9FAFB;
+    --text-color-light: #111827;
+    --box-color-light: #E5E7EB;
+    --box-shadow-color-light: rgba(0, 0, 0, 0.1);
+    --bg-color-dark: #111827;
+    --text-color-dark: #F9FAFB;
+    --box-color-dark: #1F2937;
+    --box-shadow-color-dark: rgba(0, 0, 0, 0.5);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +17,14 @@
 
 body {
     font-family: "Orbitron", sans-serif;
-    background-color: #F9FAFB;
+    background-color: var(--bg-color-light);
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-color-light);
+}
+
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
 }
 
 .container {
@@ -19,7 +37,7 @@ body {
 .box {
     width: 500px;
     height: 200px;
-    border: 2px solid #E5E7EB;
+    border: 2px solid var(--box-color-light);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,12 +45,23 @@ body {
     padding: 1rem 1rem;
     flex-direction: column;
     background-color: #FFFFFF;
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 8px 10px var(--box-shadow-color-light);
 }
 
-#date, #time {
+body.dark-mode .box {
+    border: 2px solid var(--box-color-dark);
+    background-color: var(--box-color-dark);
+    box-shadow: 0 8px 10px var(--box-shadow-color-dark);
+}
+
+#date,
+#time {
     padding: 0.5rem 0.5rem;
-    color: #111827;
+}
+
+#date.dark-mode,
+#time.dark-mode {
+    color: var(--text-color-dark);
 }
 
 #time {

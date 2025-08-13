@@ -18,8 +18,38 @@ function getDate() {
     date.textContent = today.toLocaleDateString('en-US', options);
 }
 
-window.onload = getDate;
+function initTheme() {
+    const body = document.body;
+    const savedTheme = localStorage.getItem('theme');
 
-realTimeClock();
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+    } else if (savedTheme === 'light') {
+        body.classList.remove('dark-mode');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        body.classList.add('dark-mode');
+    }
+}
 
-setInterval(realTimeClock, 1000);
+function setupToggle() {
+    const toggleBtn = document.getElementById('toggle');
+    toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+
+        // Save the new preference
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    });
+}
+
+// Run once when page loads
+window.onload = () => {
+    getDate();
+    realTimeClock();
+    initTheme();
+    setupToggle();
+    setInterval(realTimeClock, 1000);
+};
