@@ -33,8 +33,16 @@ function initTheme() {
 
 function setupToggle() {
     const toggleBtn = document.getElementById('toggle');
+    let isOn = false;
     toggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
+        if (isOn) {
+            toggleBtn.innerHTML = "<i class='bx bx-light-bulb-on'></i>";
+        } else {
+            toggleBtn.innerHTML = "<i class='bx bx-light-bulb'></i>";
+        }
+        
+        isOn = !isOn;
 
         // Save the new preference
         if (document.body.classList.contains('dark-mode')) {
