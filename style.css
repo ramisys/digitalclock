@@ -6,6 +6,7 @@
 
 body {
     font-family: "Orbitron", sans-serif;
+    background-color: #F9FAFB;
 }
 
 .container {
@@ -18,17 +19,19 @@ body {
 .box {
     width: 500px;
     height: 200px;
-    border: 2px solid black;
+    border: 2px solid #E5E7EB;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 50px;
     padding: 1rem 1rem;
     flex-direction: column;
+    background-color: #FFFFFF;
 }
 
 #date, #time {
     padding: 0.5rem 0.5rem;
+    color: #111827;
 }
 
 #time {
