@@ -21,13 +21,17 @@ function getDate() {
 function initTheme() {
     const body = document.body;
     const savedTheme = localStorage.getItem('theme');
+    const toggleBtn = document.getElementById('toggle');
 
     if (savedTheme === 'dark') {
         body.classList.add('dark-mode');
+        toggleBtn.innerHTML = "<i class='bx bx-light-bulb-on'></i>";
     } else if (savedTheme === 'light') {
         body.classList.remove('dark-mode');
+        toggleBtn.innerHTML = "<i class='bx bx-light-bulb'></i>";
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         body.classList.add('dark-mode');
+        toggleBtn.innerHTML = "<i class='bx bx-light-bulb-on'></i>";
     }
 }
 
@@ -36,19 +40,14 @@ function setupToggle() {
     let isOn = false;
     toggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
-        if (isOn) {
-            toggleBtn.innerHTML = "<i class='bx bx-light-bulb-on'></i>";
-        } else {
-            toggleBtn.innerHTML = "<i class='bx bx-light-bulb'></i>";
-        }
-        
-        isOn = !isOn;
 
         // Save the new preference
         if (document.body.classList.contains('dark-mode')) {
             localStorage.setItem('theme', 'dark');
+            toggleBtn.innerHTML = "<i class='bx bx-light-bulb-on'></i>";
         } else {
             localStorage.setItem('theme', 'light');
+            toggleBtn.innerHTML = "<i class='bx bx-light-bulb'></i>";
         }
     });
 }
